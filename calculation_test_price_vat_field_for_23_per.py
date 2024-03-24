@@ -32,7 +32,6 @@ def launch_test():
     print("TEST STARTED")
     print("4. Calculation for 23% VAT for Portugal with “Value-Added Tax” option")
     test_passed_successfully = True
-    # Launch Chrome WebDriver
     driver = webdriver.Chrome()
     driver.maximize_window()
 
@@ -48,11 +47,9 @@ def launch_test():
     price_input.send_keys("100")
 
     try:
-        # Wait for the input element to be visible
         vat_sum_input = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.ID, "NetPrice"))
         )
-        # Get the value attribute of the input element
         vat_sum_value = vat_sum_input.get_attribute("value")
 
         if vat_sum_value == "434.78":
@@ -65,14 +62,12 @@ def launch_test():
         print("An error occurred:", str(e))
 
     try:
-        # Wait for the input element to be visible
         vat_sum_input = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.ID, "Price"))
         )
-        # Get the value attribute of the input element
         vat_sum_value = vat_sum_input.get_attribute("value")
 
-        # Check if the value is "20.00"
+        # Check if the value is "534.78"
         if vat_sum_value == "534.78":
             print("The input element has value = 534.78 inside.")
         else:
